@@ -7,6 +7,7 @@ import { initialPostsState, postsReducer } from "./reducer/postsReducer.js";
 export default function App() {
   const [postsState, dispatch] = useReducer(postsReducer, initialPostsState);
   const [filter, setFilter] = useState("");
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -29,7 +30,7 @@ export default function App() {
 
     loadPosts();
     return () => controller.abort();
-  }, []);
+  },[retryCount]);
 
   const normalizedFilter = filter.trim().toLowerCase();
   const hasLoadedPosts = postsState.posts !== initialPostsState.posts;
@@ -50,8 +51,10 @@ export default function App() {
       {(postsState.loading || (!hasLoadedPosts && !postsState.error)) && (
         <p className="status" role="status">Loading posts...</p>
       )}
-      {!postsState.loading && postsState.error && (
-        <p className="status error" role="alert">Could not load posts: {postsState.error}</p>
+       {!postsState.loading && postsState.error && (
+     <p className="status error" role="alert">
+       Could not load posts: {postsState.error}
+     </p>
       )}
       {!postsState.loading && !postsState.error && hasLoadedPosts && postsState.posts.length === 0 && (
         <p className="status" role="status">No posts found.</p>
