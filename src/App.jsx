@@ -52,10 +52,18 @@ export default function App() {
         <p className="status" role="status">Loading posts...</p>
       )}
        {!postsState.loading && postsState.error && (
-     <p className="status error" role="alert">
-       Could not load posts: {postsState.error}
-     </p>
-      )}
+  <div>
+    <p className="status error" role="alert">
+      Could not load posts: {postsState.error}
+    </p>
+    <button
+      type="button"
+      onClick={() => setRetryCount((count) => count + 1)}
+    >
+      Try again
+    </button>
+  </div>
+)}
       {!postsState.loading && !postsState.error && hasLoadedPosts && postsState.posts.length === 0 && (
         <p className="status" role="status">No posts found.</p>
       )}
