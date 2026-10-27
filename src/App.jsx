@@ -38,7 +38,7 @@ export default function App() {
   );
 
   return (
-    <main className="dashboard">
+    <main className="dashboard" aria-busy={postsState.loading}>
       <header className="page-header">
         <p className="eyebrow">CONTENT OVERVIEW</p>
         <h1>Post Dashboard</h1>
