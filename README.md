@@ -28,3 +28,7 @@ npm run dev
 - Handling loading, request errors, an empty response, and a filter with no matches keeps each screen state explicit.
 
 The project uses React hooks and the browser Fetch API without external data or UI libraries, Context, Redux, Zustand, Suspense, or custom hooks.
+
+
+
+- Validating the API response and allowing a retry help handle invalid data and temporary request failures.
