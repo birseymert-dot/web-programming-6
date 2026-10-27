@@ -131,4 +131,22 @@ h1 {
   .post-card {
     padding: 1rem;
   }
+  button {
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: #30477f;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #263d7a;
+}
+
+button:focus-visible {
+  outline: 3px solid #b9c8ff;
+  outline-offset: 2px;
+}
 }
