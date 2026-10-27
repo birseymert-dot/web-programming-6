@@ -7,5 +7,11 @@ export async function fetchPosts(signal) {
     throw new Error(`Unable to load posts (HTTP ${response.status}).`);
   }
 
-  return response.json();
+ const posts = await response.json();
+
+if (!Array.isArray(posts)) {
+  throw new Error("The posts API returned an invalid response.");
+}
+
+return posts;
 }
